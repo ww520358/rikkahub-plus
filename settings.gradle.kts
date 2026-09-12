@@ -7,8 +7,8 @@ pluginManagement {
         maven("https://maven.aliyun.com/repository/central")
         google {
             content {
-                includeGroupByRegex("com\.android.*")
-                includeGroupByRegex("com\.google.*")
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
                 includeGroupByRegex("androidx.*")
             }
         }
@@ -23,18 +23,6 @@ pluginManagement {
             }
             if (requested.id.id == "com.google.devtools.ksp") {
                 useModule("com.google.devtools.ksp:symbol-processing-gradle-plugin:${requested.version}")
-            }
-        }
-    }
-        }
-        mavenCentral()
-        gradlePluginPortal()
-        maven("https://repo.itextsupport.com/android")
-    }
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "io.objectbox") {
-                useModule("io.objectbox:objectbox-gradle-plugin:${requested.version}")
             }
         }
     }
