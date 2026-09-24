@@ -10,9 +10,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
         pluginManager.apply("com.android.library")
+        pluginManager.apply("org.jetbrains.kotlin.android")
 
         extensions.configure<LibraryExtension> {
-            compileSdk = 35
+            compileSdk = 36
 
             defaultConfig {
                 minSdk = 26
