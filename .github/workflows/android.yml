@@ -18,12 +18,12 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
     
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-    
-    - name: Install required Android SDK platforms
+    - name: Set up Android SDK (use preinstalled)
       run: |
-        sdkmanager "platforms;android-35" "platforms;android-36" "build-tools;36.0.0"
+        SDKMANAGER=$(ls "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager 2>/dev/null | head -1)
+        echo "Using sdkmanager: $SDKMANAGER"
+        yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
+        "$SDKMANAGER" "platforms;android-35" "platforms;android-36" "build-tools;36.0.0"
     
     - name: Cache Gradle
       uses: actions/cache@v4
