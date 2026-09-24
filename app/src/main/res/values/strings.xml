@@ -1383,4 +1383,34 @@
   <string name="workspace_detail_compatibility_mode">Compatibility mode</string>
   <string name="workspace_detail_compatibility_mode_desc">Try enabling this if the terminal fails to start. It may reduce performance. Applies to new terminal tabs and subsequent commands.</string>
   <string name="workspace_detail_settings_save_failed">Failed to save settings</string>
+
+    <!-- rikkahub-plus: server (ssh) -->
+    <string name="server_list_page_title">Servers</string>
+    <string name="server_list_add_server">Add server</string>
+    <string name="server_detail_page_title">Server detail</string>
+    <string name="server_detail_navigate_up">Back</string>
+    <string name="server_detail_tab_terminal">Terminal</string>
+    <string name="server_detail_tab_files">Files</string>
+    <string name="server_detail_terminal_hint">Enter command…</string>
+    <string name="server_detail_send_command">Send</string>
+    <!-- rikkahub-plus: plugin -->
+    <string name="plugin_page_title">Plugins</string>
+    <string name="plugin_add">Add plugin</string>
+    <string name="plugin_delete">Delete</string>
+    <!-- rikkahub-plus: cluster -->
+    <string name="cluster_page_title">Cluster</string>
+    <string name="cluster_run">Run</string>
+    <string name="cluster_run_hint">Enter task for cluster…</string>
+    <!-- rikkahub-plus: workflow -->
+    <string name="workflow_page_title">Workflow</string>
+    <string name="workflow_run">Run</string>
+    <string name="workflow_save">Save</string>
+    <string name="workflow_cancel">Cancel</string>
+    <string name="workflow_edit">Edit</string>
+    <string name="workflow_delete">Delete</string>
+    <string name="workflow_add_node">Add node</string>
+    <string name="workflow_edit_node">Edit node</string>
+    <string name="workflow_param_key">Key</string>
+    <string name="workflow_param_value">Value</string>
+    <string name="workflow_input_hint">Workflow input…</string>
 </resources>

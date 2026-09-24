@@ -1379,4 +1379,34 @@ mDNS 地址：使用 .local 主机名，同一网络中的其他设备可通过�
   <string name="workspace_detail_compatibility_mode">兼容模式</string>
   <string name="workspace_detail_compatibility_mode_desc">如果终端无法启动，请尝试启用此功能。这可能会降低性能。适用于新的终端标签页及后续命令。</string>
   <string name="workspace_detail_settings_save_failed">保存设置失败</string>
+
+    <!-- rikkahub-plus: server (ssh) -->
+    <string name="server_list_page_title">服务器</string>
+    <string name="server_list_add_server">添加服务器</string>
+    <string name="server_detail_page_title">服务器详情</string>
+    <string name="server_detail_navigate_up">返回</string>
+    <string name="server_detail_tab_terminal">终端</string>
+    <string name="server_detail_tab_files">文件</string>
+    <string name="server_detail_terminal_hint">输入命令…</string>
+    <string name="server_detail_send_command">发送</string>
+    <!-- rikkahub-plus: plugin -->
+    <string name="plugin_page_title">插件</string>
+    <string name="plugin_add">添加插件</string>
+    <string name="plugin_delete">删除</string>
+    <!-- rikkahub-plus: cluster -->
+    <string name="cluster_page_title">集群</string>
+    <string name="cluster_run">运行</string>
+    <string name="cluster_run_hint">输入集群任务…</string>
+    <!-- rikkahub-plus: workflow -->
+    <string name="workflow_page_title">工作流</string>
+    <string name="workflow_run">运行</string>
+    <string name="workflow_save">保存</string>
+    <string name="workflow_cancel">取消</string>
+    <string name="workflow_edit">编辑</string>
+    <string name="workflow_delete">删除</string>
+    <string name="workflow_add_node">添加节点</string>
+    <string name="workflow_edit_node">编辑节点</string>
+    <string name="workflow_param_key">参数名</string>
+    <string name="workflow_param_value">参数值</string>
+    <string name="workflow_input_hint">工作流输入…</string>
 </resources>
