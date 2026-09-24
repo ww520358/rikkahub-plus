@@ -23,11 +23,27 @@ jobs:
         SDKMANAGER=$(ls "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager 2>/dev/null | head -1)
         echo "Using sdkmanager: $SDKMANAGER"
         yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
-        "$SDKMANAGER" "platforms;android-36" "platforms;android-37.0" "build-tools;36.0.0" "build-tools;37.0.0" "cmake;3.22.1" "ndk;27.0.12077973"
+        # Install packages one by one with retries; a failure here must NOT kill the build
+        # (AGP can auto-install missing components later since licenses are accepted).
+        for pkg in "platforms;android-36" "platforms;android-37.0" "build-tools;36.0.0" "build-tools;37.0.0" "cmake;3.22.1" "ndk;27.0.12077973"; do
+          echo "::group::Installing $pkg"
+          ok=false
+          for i in 1 2 3; do
+            if "$SDKMANAGER" "$pkg"; then ok=true; break; fi
+            echo "attempt $i failed for $pkg, retrying..."
+            sleep 10
+          done
+          if [ "$ok" != "true" ]; then echo "::warning::$pkg failed after retries; AGP may auto-install later"; fi
+          echo "::endgroup::"
+        done || true
         echo "=== Installed platforms ==="
         ls "$ANDROID_HOME/platforms/" || true
         echo "=== Installed build-tools ==="
         ls "$ANDROID_HOME/build-tools/" || true
+        echo "=== Installed NDK ==="
+        ls "$ANDROID_HOME/ndk/" 2>/dev/null || true
+        echo "=== Installed CMake ==="
+        ls "$ANDROID_HOME/cmake/" 2>/dev/null || true
     
     - name: Cache Gradle
       uses: actions/cache@v4
