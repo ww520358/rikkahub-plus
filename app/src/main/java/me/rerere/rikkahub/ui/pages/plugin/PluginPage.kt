@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import me.rerere.hugeicons.HugeIcons
 import me.rerere.hugeicons.stroke.Add01
 import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.Plugin
+import me.rerere.hugeicons.stroke.Puzzle
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.nav.BackButton
 import me.rerere.rikkahub.ui.theme.CustomColors
@@ -140,7 +140,7 @@ private fun PluginRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Icon(
-                imageVector = HugeIcons.Plugin,
+                imageVector = HugeIcons.Puzzle,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary
             )

@@ -41,8 +41,12 @@ android {
     }
 }
 
-tasks.named("preBuild") {
-    dependsOn(buildWebUi)
+// web-ui (pnpm) bundle is optional: CI images without pnpm would fail here.
+// Pass -PenableWebUi=true (with pnpm + node available) to build and embed the web UI assets.
+if ((findProperty("enableWebUi") as String?)?.toBoolean() == true) {
+    tasks.named("preBuild") {
+        dependsOn(buildWebUi)
+    }
 }
 
 dependencies {

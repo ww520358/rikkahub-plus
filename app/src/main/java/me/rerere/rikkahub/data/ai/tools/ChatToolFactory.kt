@@ -6,9 +6,12 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
+import kotlinx.serialization.json.jsonPrimitive
+import me.rerere.ai.core.InputSchema
 import me.rerere.ai.core.Tool
 import me.rerere.ai.provider.BuiltInTools
 import me.rerere.ai.provider.Model
+import me.rerere.ai.ui.UIMessagePart
 import me.rerere.rikkahub.data.ai.mcp.McpManager
 import me.rerere.rikkahub.data.ai.tools.local.LocalTools
 import me.rerere.rikkahub.data.datastore.Settings
@@ -68,23 +71,22 @@ class ChatToolFactory(
                 name = "browser_search",
                 description = "Open the built-in browser to perform a web search and return the page content. Use this when you need to verify current information or search the web.",
                 parameters = {
-                    buildJsonObject {
-                        put("query", buildJsonObject {
-                            put("type", JsonPrimitive("string"))
-                            put("description", JsonPrimitive("The search query"))
-                        })
-                    }
+                    InputSchema.Obj(
+                        properties = buildJsonObject {
+                            put("query", buildJsonObject {
+                                put("type", JsonPrimitive("string"))
+                                put("description", JsonPrimitive("The search query"))
+                            })
+                        },
+                        required = listOf("query")
+                    )
                 },
                 execute = { args ->
                     val query = args.jsonObject["query"]?.jsonPrimitive?.content ?: ""
                     // Emit event for ChatPage to open browser
                     me.rerere.rikkahub.ui.event.BrowserSearchEventBus.emit(query)
-                    kotlinx.serialization.json.JsonObject(
-                        mapOf(
-                            "status" to kotlinx.serialization.json.JsonPrimitive("opened"),
-                            "query" to kotlinx.serialization.json.JsonPrimitive(query),
-                            "hint" to kotlinx.serialization.json.JsonPrimitive("Browser opened. User can view results and send content to chat.")
-                        )
+                    listOf(
+                        UIMessagePart.Text("Browser opened. User can view results and send content to chat.")
                     )
                 }
             )

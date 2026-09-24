@@ -4,13 +4,14 @@ import com.jcraft.jsch.ChannelExec
 import com.jcraft.jsch.ChannelSftp
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.Session
+import com.jcraft.jsch.SftpATTRS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 
-data class RemoteFile(val name: String, val longName: String, val attrs: ChannelSftp.ATTRS)
+data class RemoteFile(val name: String, val longName: String, val attrs: SftpATTRS)
 
 class SshManager {
     private val jsch = JSch()

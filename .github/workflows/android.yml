@@ -61,6 +61,17 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew :app:assembleDebug --stacktrace
     
+    - name: Dump KSP generated sources (debug)
+      if: failure()
+      run: |
+        echo '=== KSP db generated files ==='
+        find app/build/generated/ksp -path '*data/db*' -name '*.kt' 2>/dev/null | head -20
+        echo '=== AppDatabase* dump ==='
+        for f in $(find app/build/generated/ksp -name 'AppDatabase*' 2>/dev/null | head -8); do
+          echo "----- $f -----"
+          head -40 "$f" || true
+        done
+
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:

@@ -34,7 +34,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import me.rerere.hugeicons.HugeIcons
 import me.rerere.hugeicons.stroke.Play
-import me.rerere.hugeicons.stroke.Robot
+import me.rerere.hugeicons.stroke.Robot01
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.nav.BackButton
 import me.rerere.rikkahub.ui.theme.CustomColors
@@ -144,7 +144,7 @@ private fun ClusterCard(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Icon(
-                    imageVector = HugeIcons.Robot,
+                    imageVector = HugeIcons.Robot01,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary
                 )

@@ -31,8 +31,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import me.rerere.hugeicons.HugeIcons
 import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Server01
+import me.rerere.hugeicons.stroke.ServerStack01
 import me.rerere.rikkahub.R
+import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.ui.components.nav.BackButton
 import me.rerere.rikkahub.ui.context.LocalNavController
 import me.rerere.rikkahub.ui.theme.CustomColors
@@ -102,7 +103,7 @@ fun ServerListPage() {
                 ServerCard(
                     server = server,
                     onClick = {
-                        navController.navigate("server_detail/${server.id}")
+                        navController.navigate(Screen.ServerDetail(server.id.toInt()))
                     }
                 )
             }
@@ -130,7 +131,7 @@ private fun ServerCard(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Icon(
-                imageVector = HugeIcons.Server01,
+                imageVector = HugeIcons.ServerStack01,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary
             )

@@ -131,6 +131,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material3.adaptive)
     implementation(libs.androidx.material3.adaptive.layout)
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
     // Navigation 3
     implementation(libs.androidx.navigation3.runtime)
@@ -251,7 +252,7 @@ dependencies {
 
     // modules
     implementation(project(":ai"))
-    // implementation(project(":web"))
+    implementation(project(":web"))
     implementation(project(":document"))
     implementation(project(":highlight"))
     implementation(project(":search"))
