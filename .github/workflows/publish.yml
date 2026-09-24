@@ -1,0 +1,41 @@
+name: Publish APK to Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Source actions run id (artifact app-debug)'
+        required: true
+        default: '36020233450'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Download app-debug artifact (cross-run)
+        uses: actions/download-artifact@v4
+        with:
+          name: app-debug
+          path: artifacts
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.run_id }}
+
+      - name: Show downloaded files
+        run: find artifacts -type f | head -60
+
+      - name: Create GitHub Release with APKs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          FILES=$(find artifacts -name '*.apk' -type f | sort | tr '\n' ' ')
+          echo "Found APKs: $FILES"
+          gh release create "build-${{ inputs.run_id }}" \
+            --title "APK build ${{ inputs.run_id }}" \
+            --notes "Debug APKs built by GitHub Actions run ${{ inputs.run_id }} (sources: commit on fix/build-errors)." \
+            --prerelease \
+            --target "${GITHUB_REF_NAME}" \
+            $FILES
